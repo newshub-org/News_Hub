@@ -1,0 +1,220 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Contact | News_Hub</title>  
+<meta name="description" content="Contact News_Hub to report a problem, suggest a topic, or ask a question.">  
+<meta name="theme-color" content="#03070b">  
+<meta property="og:type" content="website">  
+<meta property="og:title" content="Contact News_Hub">  
+<meta property="og:description" content="Report a problem, suggest a topic or ask a question.">  
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">  
+<style>  
+*{margin:0;padding:0;box-sizing:border-box}  
+html{scroll-behavior:smooth}  
+:root{--black:#03070b;--card:#0b151d;--aqua:#00e5ff;--white:#f4fbff;--gray:#a3b4c0;--line:rgba(0,229,255,.16)}  
+body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}  
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}  
+.skip{position:absolute;left:-999px;top:10px;background:var(--aqua);color:#001014;padding:10px 16px;border-radius:8px;font-weight:700;z-index:2000}  
+.skip:focus{left:10px}  
+header{position:sticky;top:0;z-index:1000;background:rgba(3,7,11,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}  
+.navbar{max-width:1200px;margin:auto;height:75px;padding:0 25px;display:flex;align-items:center;justify-content:flex-start}  
+.brand{display:flex;align-items:center;gap:14px}  
+.back-btn{width:44px;height:44px;border:1px solid rgba(0,229,255,.3);border-radius:50%;background:rgba(0,229,255,.05);color:var(--aqua);font-size:26px;line-height:1;padding-bottom:3px;cursor:pointer;transition:.3s;font-family:inherit}  
+.back-btn:hover{background:var(--aqua);color:#001014}  
+.logo{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--white);text-decoration:none}  
+.logo span,h1 span{color:var(--aqua)}  
+.hero{padding:90px 25px 40px;background:radial-gradient(circle at 15% 0,rgba(0,229,255,.12),transparent 45%)}  
+.hero-inner{max-width:1200px;margin:auto}  
+h1{font-size:clamp(55px,9vw,105px);line-height:.91;letter-spacing:-6px;margin-bottom:30px}  
+.hero p{max-width:620px;color:#b6c5cf;font-size:16px;line-height:1.8}  
+.wrap{max-width:1200px;margin:auto;padding:40px 25px 100px;display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}  
+.panel{padding:32px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#0c191f,#071015)}  
+.panel h2{font-size:22px;margin-bottom:14px}  
+.panel p,.panel li{color:var(--gray);font-size:14px;line-height:1.9}  
+.topics{list-style:none;display:grid;gap:12px;margin:18px 0 22px}  
+.topics li{padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:12px;line-height:1.7}  
+.topics strong{display:block;color:var(--white);font-size:14px;margin-bottom:2px}  
+.mail a{color:var(--aqua);font-weight:700;word-break:break-all}  
+label{display:block;margin:0 0 7px;font-size:12px;font-weight:700;color:#d3e0e7}  
+.field{margin-bottom:20px}  
+input,select,textarea{width:100%;padding:14px 16px;font:inherit;font-size:14px;color:var(--white);background:#08121a;border:1px solid rgba(255,255,255,.16);border-radius:10px}  
+input:hover,select:hover,textarea:hover{border-color:rgba(0,229,255,.4)}  
+textarea{min-height:160px;resize:vertical}  
+[aria-invalid="true"]{border-color:#ff6b6b}  
+.err{display:none;margin-top:6px;color:#ff9b9b;font-size:11px}  
+[aria-invalid="true"]+.err{display:block}  
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border:0;border-radius:9px;background:var(--aqua);color:#001014;font:inherit;font-size:12px;font-weight:800;cursor:pointer;transition:.25s}  
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,229,255,.25)}  
+.note{margin-top:14px;color:#8396a3;font-size:11px;line-height:1.7}  
+.status{margin-top:16px;padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:rgba(0,229,255,.06);font-size:12px;display:none}  
+.status.show{display:block}  
+footer{border-top:1px solid var(--line);background:#020509}  
+.footer-inner{max-width:1200px;margin:auto;padding:45px 25px 25px;display:flex;justify-content:space-between;gap:30px}  
+.footer-inner .logo{font-size:22px}  
+.footer-description{max-width:400px;margin-top:10px;color:#8396a3;font-size:12px;line-height:1.7}  
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;align-content:flex-start}  
+.footer-links a{color:#b3c2cc;font-size:14px;text-decoration:none}  
+.footer-links a:hover{color:var(--aqua)}  
+.copyright{max-width:1200px;margin:auto;padding:20px 25px 25px;border-top:1px solid rgba(255,255,255,.06);color:#7f909b;text-align:center;font-size:10px}  
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}  
+@media(max-width:600px){  
+.navbar{height:68px;padding:0 18px}.logo{font-size:21px}.hero{padding:65px 20px 30px}h1{font-size:54px;letter-spacing:-4px}.hero p{font-size:14px}  
+.wrap{padding:30px 20px 70px}.panel{padding:28px}.btn{width:100%}  
+.footer-inner{flex-direction:column;padding:40px 20px 25px}.footer-links{gap:18px}.copyright{padding-inline:20px}}  
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}  
+</style>  
+</head>  
+<body>  
+<a class="skip" href="#main">Skip to content</a>  
+<header>  
+<nav class="navbar" aria-label="Main">  
+<div class="brand">  
+<button class="back-btn" id="backBtn" type="button" aria-label="Go back">‹</button>  
+<a class="logo">News<span>_Hub</span></a>  
+</div>  
+</nav>  
+</header>  <main id="main">  
+<section class="hero">  
+<div class="hero-inner">  
+<h1>Get in <span>touch.</span></h1>  
+<p>Found a problem, want a topic added, or have a question? Send us a message and tell us as much as you can.</p>  
+</div>  
+</section>  <div class="wrap">  
+<aside class="panel" aria-labelledby="h-help">  
+<h2 id="h-help">What you can contact us about</h2>  
+<ul class="topics">  
+<li><strong>Report a problem</strong>A broken link, a page that won't load, or a display issue.</li>  
+<li><strong>Suggest a topic</strong>A category or keyword you'd like to see covered.</li>  
+<li><strong>Content or copyright request</strong>If you own content shown here and want it reviewed or removed.</li>  
+</ul>  
+<p class="mail">Prefer email? Write to "contact.newshub.org@gmail.com" </p>  
+</aside>  <section class="panel" aria-labelledby="h-form">  
+<h2 id="h-form">Send a message</h2>  
+<form id="form" novalidate>  
+<div class="field">  
+<label for="name">Your name</label>  
+<input id="name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">  
+<div class="err" id="e-name">Please enter your name.</div>  
+</div>  
+<div class="field">  
+<label for="email">Your email</label>  
+<input id="email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">  
+<div class="err" id="e-email">Please enter a valid email address, for example name@example.com.</div>  
+</div>  
+<div class="field">  
+<label for="topic">Topic</label>  
+<select id="topic" name="topic">  
+<option>General question</option>  
+<option>Report a problem</option>  
+<option>Suggest a topic</option>  
+<option>Content or copyright request</option>  
+</select>  
+</div>  
+<div class="field">  
+<label for="message">Message</label>  
+<textarea id="message" name="message" required aria-describedby="e-msg"></textarea>  
+<div class="err" id="e-msg">Please write a message of at least 10 characters.</div>  
+</div>  
+<button class="btn" type="submit">Send message</button>  
+<div class="status" id="status" role="status" aria-live="polite"></div>  
+<p class="note">Sending opens your email app with this message ready to send. We only use your details to reply to you.</p>  
+</form>  
+</section>  
+</div>  
+</main>  <footer>  
+<div class="footer-inner">  
+<div>  
+<a class="logo">News<span>_Hub</span></a>  
+<p class="footer-description">A simple and modern platform for discovering news from around the world. Stories are linked from their original publishers.</p>  
+</div>  
+<nav class="footer-links" aria-label="Footer">  
+<a href="contact.html">Contact</a>  
+<a href="privacy.html">Privacy</a>  
+<a href="terms.html">Terms</a>  
+</nav>  
+</div>  
+<div class="copyright">© 2026 News_Hub. All rights reserved.</div>  
+</footer>  
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init({
+  publicKey:"fJ_WhFcapKD5HChzc"
+});
+
+document.getElementById("backBtn").addEventListener("click",()=>{
+  if(history.length>1)history.back();
+  else location.href="index.html";
+});
+
+const form=document.getElementById("form");
+const status=document.getElementById("status");
+
+function check(el,ok){
+  el.setAttribute("aria-invalid",ok?"false":"true");
+  return ok;
+}
+
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+
+  const f=form.elements;
+
+  const okName=check(
+    f.name,
+    f.name.value.trim().length>1
+  );
+
+  const okMail=check(
+    f.email,
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())
+  );
+
+  const okMsg=check(
+    f.message,
+    f.message.value.trim().length>=10
+  );
+
+  if(!(okName&&okMail&&okMsg)){
+    form.querySelector('[aria-invalid="true"]').focus();
+    return;
+  }
+
+  const button=form.querySelector(".btn");
+
+  button.disabled=true;
+  button.textContent="Sending...";
+  status.classList.remove("show");
+
+  try{
+    await emailjs.send(
+      "service_3s3ie3p",
+      "template_khknxpg",
+      {
+        name:f.name.value.trim(),
+        email:f.email.value.trim(),
+        topic:f.topic.value,
+        message:f.message.value.trim()
+      }
+    );
+
+    status.textContent="✓ Message sent successfully. Thank you!";
+    status.classList.add("show");
+
+    form.reset();
+
+  }catch(error){
+    console.error("EmailJS error:",error);
+
+    status.textContent="✕ Message could not be sent. Please try again.";
+    status.classList.add("show");
+
+  }finally{
+    button.disabled=false;
+    button.textContent="Send message";
+  }
+});
+</script> 
+
+</body>  
+</html> 

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About us | News_Hub </title>
+<meta name="description" content="Learn what News_Hub is, how it works, where stories come from and how to get in touch.">
+<meta name="theme-color" content="#03070b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About News_Hub">
+<meta property="og:description" content="One clean place to discover news from different categories.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{--black:#03070b;--card:#0b151d;--aqua:#00e5ff;--white:#f4fbff;--gray:#a3b4c0;--line:rgba(0,229,255,.16)}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:10px;background:var(--aqua);color:#001014;padding:10px 16px;border-radius:8px;font-weight:700;z-index:2000}
+.skip:focus{left:10px}
+header{position:sticky;top:0;z-index:1000;background:rgba(3,7,11,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navbar{max-width:1200px;margin:auto;height:75px;padding:0 25px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--white);text-decoration:none}
+.logo span,.hero h1 span{color:var(--aqua)}
+.menu-container{position:relative}
+.menu-btn{width:44px;height:44px;border:1px solid rgba(0,229,255,.3);border-radius:50%;background:rgba(0,229,255,.05);color:var(--aqua);font-size:22px;cursor:pointer;transition:0.3s}
+.menu-btn:hover{background:var(--aqua);color:#001014; transform: rotate(90deg); box-shadow: 0 0 25px rgba(0,229,255,0.3);}
+.nav-menu{position:absolute;top:57px;right:0;width:200px;padding:8px;list-style:none;background:rgba(7,16,24,.98);border:1px solid var(--line);border-radius:15px;box-shadow:0 20px 50px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-10px);transition:.25s}
+.nav-menu.show{opacity:1;visibility:visible;transform:none}
+.nav-menu a{display:block;padding:13px 15px;color:#d3e0e7;text-decoration:none;border-radius:9px;font-size:14px;font-weight:600}
+.nav-menu a:hover,.nav-menu a[aria-current]{background:rgba(0,229,255,.1);color:var(--aqua)}
+.hero{position:relative;min-height:560px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(3,7,11,.98) 5%,rgba(3,7,11,.85) 45%,rgba(3,7,11,.45)),url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1800&q=80") center/cover}
+.hero-content{width:min(1200px,100%);margin:auto;padding:80px 25px}
+.hero-label{display: inline-flex; align-items: center; gap: 10px; padding: 8px 15px; margin-bottom: 25px; border: 1px solid rgba(0,229,255,0.3); border-radius: 30px;
+    background: rgba(0,229,255,0.06);  color: var(--aqua); font-size: 11px; font-weight: 800; letter-spacing: 2px; box-shadow:0 0 30px rgba(0,229,255,.04); }
+.hero-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 12px var(--aqua); animation:pulse 1.7s infinite;  }
+@keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.45;transform:scale(.75)} }
+.hero h1{max-width:850px;font-size:clamp(55px,9vw,105px);line-height:.91;letter-spacing:-6px;margin-bottom:30px}
+.hero p{max-width:620px;color:#b6c5cf;font-size:16px;line-height:1.8;margin-bottom:35px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:9px;background:var(--aqua);color:#001014;text-decoration:none;font-size:12px;font-weight:800;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,229,255,.25)}
+.btn.ghost{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn.ghost:hover{border-color:var(--aqua);color:var(--aqua)}
+.container{max-width:1200px;margin:auto;padding:100px 25px}
+.heading{max-width:720px;margin-bottom:45px}
+.heading.center{margin-inline:auto;text-align:center}
+.eyebrow{color:var(--aqua);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.heading h2{font-size:clamp(35px,5vw,58px);line-height:1.06;letter-spacing:-3px}
+.heading p{margin-top:15px;color:var(--gray);font-size:14px;line-height:1.8}
+.story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+.story-image{min-height:440px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(0deg,rgba(3,7,11,.8),transparent 60%),url("https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80") center/cover}
+.story-content{display:flex;flex-direction:column;justify-content:center;padding:36px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#0c191f,#071015)}
+.story-content h3{font-size:30px;line-height:1.2;margin-bottom:18px}
+.story-content p{color:var(--gray);font-size:14px;line-height:1.9}
+.checks{display:grid;gap:10px;margin-top:25px;list-style:none}
+.checks li{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:#c9d6de;font-size:12px}
+.checks li::before{content:"✓";color:var(--aqua);font-size:16px;font-weight:800}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding:28px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:var(--card)}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin-bottom:16px;border-radius:50%;background:rgba(0,229,255,.1);border:1px solid var(--line);color:var(--aqua);font-size:14px;font-weight:800}
+.steps h3{font-size:19px;margin-bottom:10px}
+.steps p{color:var(--gray);font-size:12px;line-height:1.7}
+.band{background:linear-gradient(180deg,#050b0f,#07141a);border-block:1px solid rgba(255,255,255,.05)}
+.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.offer{padding:26px 18px;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:15px;background:rgba(255,255,255,.025)}
+.offer-icon{font-size:30px;margin-bottom:10px}
+.offer h3{font-size:19px}
+.offer p{margin-top:6px;color:var(--gray);font-size:12px;line-height:1.7}
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{padding:32px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.panel h3{font-size:22px;margin-bottom:12px}
+.panel p,.panel li{color:var(--gray);font-size:14px;line-height:1.9}
+.panel ul{padding-left:20px}
+.panel a{color:var(--aqua)}
+.faq{max-width:820px;margin:auto}
+.faq details{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:var(--card);margin-bottom:12px}
+.faq summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:14px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--aqua);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 22px 20px;color:var(--gray);font-size:12px;line-height:1.7}
+.cta{max-width:1050px;margin:20px auto 100px;padding:0 25px}
+.cta-box{padding:65px 30px;text-align:center;border:1px solid rgba(0,229,255,.22);border-radius:25px;background:radial-gradient(circle at 50% -100%,rgba(0,229,255,.2),transparent 55%),#08151b}
+.cta-box h2{font-size:clamp(32px,5vw,55px);letter-spacing:-3px}
+.cta-box p{max-width:600px;margin:15px auto 25px;color:var(--gray);font-size:14px;line-height:1.8}
+.cta-box .btn+.btn{margin-left:10px}
+footer{border-top:1px solid var(--line);background:#020509}
+.footer-inner{max-width:1200px;margin:auto;padding:45px 25px 25px;display:flex;justify-content:space-between;gap:30px}
+.footer-inner .logo{font-size:22px}
+.footer-description{max-width:400px;margin-top:10px;color:#8396a3;font-size:12px;line-height:1.7}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;align-content:flex-start}
+.footer-links a{color:#b3c2cc;font-size:14px;text-decoration:none}
+.footer-links a:hover{color:var(--aqua)}
+.copyright{max-width:1200px;margin:auto;padding:20px 25px 25px;border-top:1px solid rgba(255,255,255,.06);color:#7f909b;text-align:center;font-size:10px}
+@media(max-width:950px){.story-grid,.steps,.trust{grid-template-columns:1fr}.offer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+.navbar{height:68px;padding:0 18px}.logo{font-size:21px}.hero{min-height:520px}.hero-content{padding:70px 20px}.hero h1{font-size:54px;letter-spacing:-4px}.hero p{font-size:14px}
+.container{padding:70px 20px}.story-image{min-height:300px}.story-content,.panel{padding:28px}
+.offer-grid{grid-template-columns:1fr}.cta{padding:0 20px;margin-bottom:70px}.cta-box{padding:50px 25px}
+.cta-box .btn{width:100%}.cta-box .btn+.btn{margin:10px 0 0}
+.footer-inner{flex-direction:column;padding:40px 20px 25px}.footer-links{gap:18px}.copyright{padding-inline:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<nav class="navbar" aria-label="Main">
+<a class="logo">News<span>_Hub</span></a>
+<div class="menu-container">
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">☰</button>
+<ul class="nav-menu" id="navMenu">
+<li><a href= "index.html">⌂ &nbsp; Home</a></li>
+<li><a href="Search.html">⌕ &nbsp; Search News</a></li>
+<li><a href="Categories.html">◈ &nbsp; Categories</a></li>
+<li><a href="About.html" aria-current="page">ⓘ &nbsp; About</a></li>
+</ul>
+</div>
+</nav>
+</header>
+
+<main id="main">
+<section class="hero">
+<div class="hero-content">
+<div class="hero-label"> ABOUT NEWS_HUB </div>
+<h1>News should be <span>simple.</span></h1>
+<p>News_Hub makes it easier to find what is happening. Browse by category or search a topic, then read the full story on the publisher's own site.</p>
+<a href="Search.html" class="btn">Search latest news →</a>
+</div>
+</section>
+
+<section class="container" aria-labelledby="h-story">
+<div class="heading">
+<div class="eyebrow">Our story</div>
+<h2 id="h-story">One place.<br>Many stories.</h2>
+<p>Instead of checking many sites, you can discover different topics from one convenient platform.</p>
+</div>
+<div class="story-grid">
+<div class="story-image" role="img" aria-label="A person reading a newspaper"></div>
+<div class="story-content">
+<h3>Built around simple discovery.</h3>
+<p>News_Hub is a modern news website that gives you a straightforward way to explore information from different areas, without clutter or confusing menus.</p>
+<ul class="checks">
+<li>Browse news by category</li>
+<li>Search for topics that interest you</li>
+<li>Read on a clean, fast interface</li>
+<li>Use it on phone, tablet or desktop</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="container" style="padding-top:0" aria-labelledby="h-how">
+<div class="heading center">
+<div class="eyebrow">How it works</div>
+<h2 id="h-how">From question to story in three steps.</h2>
+</div>
+<ol class="steps">
+<li><h3>Pick a topic</h3><p>Choose a category such as World, Technology, Sports or Business, or type your own keyword.</p></li>
+<li><h3>Scan the headlines</h3><p>See titles, sources and dates at a glance so you can decide what is worth your time.</p></li>
+<li><h3>Read the original</h3><p>Open the story on the publisher's website to get the full article.</p></li>
+</ol>
+</section>
+
+<section class="band" aria-labelledby="h-offer">
+<div class="container">
+<div class="heading center">
+<div class="eyebrow">What we offer</div>
+<h2 id="h-offer">Features that keep it easy.</h2>
+</div>
+<div class="offer-grid">
+<div class="offer"><div class="offer-icon" aria-hidden="true">🌎</div><h3>Latest news</h3><p>Recent stories from around the world.</p></div>
+<div class="offer"><div class="offer-icon" aria-hidden="true">🗂️</div><h3>Categories</h3><p>Organized topics to browse.</p></div>
+<div class="offer"><div class="offer-icon" aria-hidden="true">🔎</div><h3>Search</h3><p>Find a topic in seconds.</p></div>
+<div class="offer"><div class="offer-icon" aria-hidden="true">📱</div><h3>Responsive</h3><p>Works on any screen size.</p></div>
+</div>
+</div>
+</section>
+
+<section class="container" aria-labelledby="h-trust">
+<div class="heading center">
+<div class="eyebrow">Transparency</div>
+<h2 id="h-trust">Where stories come from.</h2>
+<p>You should always know who wrote what you are reading.</p>
+</div>
+<div class="trust">
+<div class="panel">
+<h3>Credit to publishers</h3>
+<p>News_Hub links to stories from their original publishers. Headlines, summaries and images belong to those publishers, and each story shows its source and date.</p>
+</div>
+<div class="panel">
+<h3>Our principles</h3>
+<ul>
+<li>We do not edit or rewrite publishers' articles.</li>
+<li>We always show the source.</li>
+<li>We keep the site free of clutter.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="container" style="padding-top:0" aria-labelledby="h-faq">
+<div class="heading center">
+<div class="eyebrow">FAQ</div>
+<h2 id="h-faq">Common questions.</h2>
+</div>
+<div class="faq">
+<details><summary>Is News_Hub free to use?</summary><p>Yes. You can search and browse every category without an account.</p></details>
+<details><summary>Does News_Hub write the news?</summary><p>No. We help you discover stories and send you to the original publisher for the full article.</p></details>
+<details><summary>How can I report a problem or suggest a topic?</summary><p>Use the <a href="contact.html" style="color:var(--aqua)">contact page</a> and tell us what you found or what you would like to see.</p></details>
+</div>
+</section>
+
+<section class="cta" aria-labelledby="h-cta">
+<div class="cta-box">
+<h2 id="h-cta">Ready to explore?</h2>
+<p>Search for a topic and see the latest stories from around the world.</p>
+<a href="Search.html" class="btn">Search news →</a>
+<a href="Categories.html" class="btn ghost">Browse categories</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="footer-inner">
+<div>
+<a class="logo">News<span>_Hub</span></a>
+<p class="footer-description">A simple and modern platform for discovering news from around the world. Stories are linked from their original publishers.</p>
+</div>
+<nav class="footer-links" aria-label="Footer">
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</nav>
+</div>
+<div class="copyright">© 2026 News_Hub. All rights reserved.</div>
+</footer>
+
+<script>
+const menu=document.getElementById("navMenu"),btn=document.getElementById("menuBtn");
+function setMenu(o){menu.classList.toggle("show",o);btn.setAttribute("aria-expanded",o);}
+btn.addEventListener("click",()=>setMenu(!menu.classList.contains("show")));
+document.addEventListener("click",e=>{if(!menu.contains(e.target)&&!btn.contains(e.target))setMenu(false);});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){setMenu(false);btn.focus();}});
+</script>
+</body>
+</html>

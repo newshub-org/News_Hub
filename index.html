@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | News_Hub </title>
+<meta name="description" content="News_Hub brings world, technology, sports and business news together in one clean place. Search topics and read the latest stories.">
+<meta name="theme-color" content="#03070b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="News_Hub | Your World. Your News.">
+<meta property="og:description" content="Discover the latest stories from around the world in one simple place.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{--black:#03070b;--card:#0b151d;--aqua:#00e5ff;--white:#f4fbff;--gray:#a3b4c0;--line:rgba(0,229,255,.16)}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+a:focus-visible,button:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:10px;background:var(--aqua);color:#001014;padding:10px 16px;border-radius:8px;font-weight:700;z-index:2000}
+.skip:focus{left:10px}
+header{position:sticky;top:0;z-index:1000;background:rgba(3,7,11,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navbar{max-width:1200px;margin:auto;height:75px;padding:0 25px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--white);text-decoration:none}
+.logo span,.hero h1 span{color:var(--aqua)}
+.menu-container{position:relative}
+.menu-btn{width:44px;height:44px;border:1px solid rgba(0,229,255,.3);border-radius:50%;background:rgba(0,229,255,.05);color:var(--aqua);font-size:22px;cursor:pointer;transition:0.3s}
+.menu-btn:hover{background:var(--aqua);color:#001014; transform: rotate(90deg); box-shadow: 0 0 25px rgba(0,229,255,0.3);}
+.nav-menu{position:absolute;top:57px;right:0;width:200px;padding:8px;list-style:none;background:rgba(7,16,24,.98);border:1px solid var(--line);border-radius:15px;box-shadow:0 20px 50px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-10px);transition:.25s}
+.nav-menu.show{opacity:1;visibility:visible;transform:none}
+.nav-menu a{display:block;padding:13px 15px;color:#d3e0e7;text-decoration:none;border-radius:9px;font-size:14px;font-weight:600}
+.nav-menu a:hover,.nav-menu a[aria-current]{background:rgba(0,229,255,.1);color:var(--aqua)}
+.hero{position:relative;min-height:720px;display:flex;align-items:center;overflow:hidden}
+.hero-image{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,7,11,.98) 5%,rgba(3,7,11,.84) 42%,rgba(3,7,11,.35) 100%),url("https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1800&q=80") center/cover}
+.hero-content{position:relative;width:min(1200px,100%);margin:auto;padding:80px 25px; z-index: 2;}
+.hero-label{display: inline-flex; align-items: center; gap: 10px; padding: 8px 15px; margin-bottom: 25px; border: 1px solid rgba(0,229,255,0.3); border-radius: 30px;
+    background: rgba(0,229,255,0.06);  color: var(--aqua); font-size: 11px; font-weight: 800; letter-spacing: 2px; box-shadow:0 0 30px rgba(0,229,255,.04); }
+.hero-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 12px var(--aqua); animation:pulse 1.7s infinite;  }
+@keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.45;transform:scale(.75)} }
+.hero h1{max-width:850px;font-size:clamp(55px,9vw,105px);line-height:.91;letter-spacing:-6px;margin-bottom:30px}
+.hero p{max-width:600px;color:#b6c5cf;font-size:16px;line-height:1.8;margin-bottom:35px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:9px;text-decoration:none;font-size:12px;font-weight:800;transition:.25s;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--aqua);color:#001014}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,229,255,.25)}
+.btn-secondary{border-color:rgba(255,255,255,.2);color:#fff;background:rgba(255,255,255,.04)}
+.btn-secondary:hover{border-color:var(--aqua);color:var(--aqua)}
+.section{max-width:1200px;margin:auto;padding:100px 25px}
+.section-heading{margin-bottom:45px}
+.section-label{color:var(--aqua);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.section-heading h2{font-size:clamp(35px,5vw,58px);letter-spacing:-3px}
+.section-heading p{max-width:650px;margin-top:15px;color:var(--gray);font-size:14px;line-height:1.8}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.about-image{min-height:430px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(0deg,rgba(3,7,11,.8),transparent 60%),url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80") center/cover}
+.about-content{padding:35px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#0c1821,#071018);border:1px solid var(--line);border-radius:22px}
+.about-content h3{font-size:30px;margin-bottom:18px}
+.about-content p{color:var(--gray);font-size:14px;line-height:1.9}
+.about-points{display:grid;gap:12px;margin-top:25px;list-style:none}
+.about-points li{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:#c9d6de;font-size:12px}
+.about-points li::before{content:"✓";color:var(--aqua);font-size:16px;font-weight:800}
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.category-card{position:relative;min-height:300px;overflow:hidden;border-radius:18px;border:1px solid var(--line);text-decoration:none;color:#fff}
+.category-image{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s}
+.category-card:hover .category-image{transform:scale(1.08)}
+.c1{background-image:linear-gradient(0deg,rgba(3,7,11,.95),transparent 70%),url("https://images.unsplash.com/photo-1521292270410-a8c4d716d518?auto=format&fit=crop&w=800&q=75")}
+.c2{background-image:linear-gradient(0deg,rgba(3,7,11,.95),transparent 70%),url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=75")}
+.c3{background-image:linear-gradient(0deg,rgba(3,7,11,.95),transparent 70%),url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=75")}
+.c4{background-image:linear-gradient(0deg,rgba(3,7,11,.95),transparent 70%),url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=75")}
+.category-content{position:absolute;left:20px;right:20px;bottom:20px}
+.category-content h3{font-size:22px}
+.category-content p{color:#b3c2cc;font-size:11px;margin-top:6px}
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{display:flex;flex-direction:column;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;transition:.3s}
+.news-card:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.4)}
+.news-image{height:210px;background:#10202b;object-fit:cover;width:100%;display:block}
+.news-content{padding:22px;display:flex;flex-direction:column;flex:1}
+.news-meta{color:var(--aqua);font-size:9px;font-weight:800;letter-spacing:1.5px;margin-bottom:10px}
+.news-content h3{font-size:19px;line-height:1.4;margin-bottom:10px}
+.news-content p{color:var(--gray);font-size:12px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.read-more{margin-top:auto;padding-top:16px;color:var(--aqua);font-size:11px;font-weight:800;text-decoration:none}
+.read-more:hover{text-decoration:underline}
+.skeleton .news-image,.skeleton i{background:linear-gradient(90deg,#10202b,#17303f,#10202b);background-size:200% 100%;animation:sh 1.4s infinite}
+.skeleton i{display:block;height:14px;border-radius:6px;margin-bottom:12px}
+@keyframes sh{to{background-position:-200% 0}}
+.feed-status{grid-column:1/-1;padding:30px;text-align:center;border:1px dashed var(--line);border-radius:16px;color:var(--gray);line-height:1.7}
+.feed-status button{margin-top:14px}
+.feed-note{margin-top:22px;color:#8396a3;font-size:13px}
+.cta{max-width:1200px;margin:auto;padding:0 25px 100px}
+.cta-box{position:relative;overflow:hidden;padding:65px 40px;text-align:center;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#0b1b24,#071018)}
+.cta-box h2{font-size:clamp(32px,5vw,55px);letter-spacing:-3px;margin-bottom:15px}
+.cta-box p{max-width:600px;margin:auto auto 25px;color:var(--gray);line-height:1.8;font-size:14px}
+footer{border-top:1px solid var(--line);background:#020509}
+.footer-inner{max-width:1200px;margin:auto;padding:45px 25px 25px;display:flex;justify-content:space-between;gap:30px}
+.footer-inner .logo{font-size:22px}
+.footer-description{max-width:400px;margin-top:10px;color:#8396a3;font-size:12px;line-height:1.7}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;align-content:flex-start}
+.footer-links a{color:#b3c2cc;font-size:14px;text-decoration:none}
+.footer-links a:hover{color:var(--aqua)}
+.copyright{max-width:1200px;margin:auto;padding:20px 25px 25px;border-top:1px solid rgba(255,255,255,.06);color:#7f909b;text-align:center;font-size:10px}
+@media(max-width:900px){.category-grid{grid-template-columns:repeat(2,1fr)}.about-grid,.featured-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+.navbar{height:68px;padding:0 18px}.logo{font-size:21px}.hero{min-height:680px}.hero-content{padding:70px 20px}
+.hero h1{font-size:54px;letter-spacing:-4px}.hero p{font-size:14px}.hero-buttons{flex-direction:column}.btn-primary,.btn-secondary{width:100%}
+.section{padding:70px 20px}.about-image{min-height:300px}.about-content{padding:28px}
+.category-grid{grid-template-columns:1fr}.category-card{min-height:260px}
+.featured-grid{gap:16px}
+.cta{padding:0 20px 70px}.cta-box{padding:50px 25px}.footer-inner{flex-direction:column;padding:40px 20px 25px}.footer-links{gap:18px}.copyright{padding-inline:20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<nav class="navbar" aria-label="Main">
+<div class="logo">News<span>_Hub</span></div>
+<div class="menu-container">
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">☰</button>
+<ul class="nav-menu" id="navMenu">
+<li><a href="Home.html" aria-current="page">⌂ &nbsp; Home</a></li>
+<li><a href="Search.html">⌕ &nbsp; Search News</a></li>
+<li><a href="Categories.html">◈ &nbsp; Categories</a></li>
+<li><a href="About.html">ⓘ &nbsp; About</a></li>
+</ul>
+</div>
+</nav>
+</header>
+
+<main id="main">
+<section class="hero">
+<div class="hero-image" role="presentation"></div>
+<div class="hero-content">
+<div class="hero-label">GLOBAL NEWS PLATFORM</div>
+<h1>Your World.<br><span>Your News.</span></h1>
+<p>Discover the latest stories, important events and developments from around the world, all in one simple place.</p>
+<div class="hero-buttons">
+<a href="Search.html" class="btn-primary">Search latest news →</a>
+<a href="#categories" class="btn-secondary">Browse categories</a>
+</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="h-latest" id="latest">
+<div class="section-heading">
+<div class="section-label">Live headlines</div>
+<h2 id="h-latest">Latest stories</h2>
+<p>Fresh space and science reports, loaded live from the Spaceflight News API. Select a story to read it on the publisher's site.</p>
+</div>
+<div class="featured-grid" id="feed" aria-live="polite" aria-busy="true">
+<article class="news-card skeleton"><div class="news-image"></div><div class="news-content"><i style="width:40%"></i><i></i><i style="width:80%"></i></div></article>
+<article class="news-card skeleton"><div class="news-image"></div><div class="news-content"><i style="width:40%"></i><i></i><i style="width:80%"></i></div></article>
+<article class="news-card skeleton"><div class="news-image"></div><div class="news-content"><i style="width:40%"></i><i></i><i style="width:80%"></i></div></article>
+</div>
+<p class="feed-note">Headlines and images belong to their original publishers. <span id="updated"></span></p>
+</section>
+
+<section class="section" id="categories" aria-labelledby="h-cat">
+<div class="section-heading">
+<div class="section-label">Explore</div>
+<h2 id="h-cat">News categories</h2>
+<p>Pick a topic and go straight to the stories that matter to you.</p>
+</div>
+<div class="category-grid">
+<a href="Categories/world.html" class="category-card" aria-label="World News: stories from around the globe"><div class="category-image c1"></div><div class="category-content"><h3>World News</h3><p>Stories from around the globe</p></div></a>
+<a href="Categories/technology.html" class="category-card" aria-label="Technology: innovation, AI and the digital world"><div class="category-image c2"></div><div class="category-content"><h3>Technology</h3><p>Innovation, AI and digital world</p></div></a>
+<a href="Categories/sports.html" class="category-card" aria-label="Sports: latest games and sporting events"><div class="category-image c3"></div><div class="category-content"><h3>Sports</h3><p>Latest games and sporting events</p></div></a>
+<a href="Categories/business.html" class="category-card" aria-label="Business: markets, companies and economy"><div class="category-image c4"></div><div class="category-content"><h3>Business</h3><p>Markets, companies and economy</p></div></a>
+</div>
+</section>
+
+<section class="section" aria-labelledby="h-about">
+<div class="section-heading">
+<div class="section-label">About News_Hub</div>
+<h2 id="h-about">News without<br>the confusion.</h2>
+<p>Finding news should not be complicated. News_Hub brings different topics together so you can discover stories quickly.</p>
+</div>
+<div class="about-grid">
+<div class="about-image" role="img" aria-label="Desk with a laptop and newspapers"></div>
+<div class="about-content">
+<h3>Everything in one place.</h3>
+<p>Whether you follow technology, business, sports or world events, you can explore it all through one simple platform.</p>
+<ul class="about-points">
+<li>Latest stories from different categories</li>
+<li>Simple and organized news discovery</li>
+<li>Search for topics that interest you</li>
+<li>Clean layout that works on any screen</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="cta" aria-labelledby="h-cta">
+<div class="cta-box">
+<h2 id="h-cta">Looking for a topic?</h2>
+<p>Search by keyword to find the latest stories on finance, technology, climate, crypto and more.</p>
+<a href="Search.html" class="btn-primary">Search news →</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="footer-inner">
+<div>
+<a class="logo">News<span>_Hub</span></a>
+<p class="footer-description">A simple and modern platform for discovering news from around the world. Stories are linked from their original publishers.</p>
+</div>
+<nav class="footer-links" aria-label="Footer">
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</nav>
+</div>
+<div class="copyright">© 2026 News_Hub. All rights reserved.</div>
+</footer>
+
+<script>
+const menu=document.getElementById("navMenu"),btn=document.getElementById("menuBtn");
+function setMenu(open){menu.classList.toggle("show",open);btn.setAttribute("aria-expanded",open);}
+btn.addEventListener("click",()=>setMenu(!menu.classList.contains("show")));
+document.addEventListener("click",e=>{if(!menu.contains(e.target)&&!btn.contains(e.target))setMenu(false);});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){setMenu(false);btn.focus();}});
+
+const feed=document.getElementById("feed");
+function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;}
+function showError(){
+  feed.replaceChildren();
+  const box=el("div","feed-status","We couldn't load the latest headlines. Check your connection and try again, or search for a topic.");
+  box.appendChild(document.createElement("br"));
+  const retry=el("button","btn-primary","Try again");
+  retry.addEventListener("click",loadFeed);
+  box.append(retry," ");
+  const s=el("a","btn-secondary","Search news");s.href="Search.html";
+  box.appendChild(s);
+  feed.appendChild(box);feed.setAttribute("aria-busy","false");
+}
+async function loadFeed(){
+  feed.setAttribute("aria-busy","true");
+  const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),8000);
+  try{
+    const r=await fetch("https://api.spaceflightnewsapi.net/v4/articles/?limit=3&ordering=-published_at",{signal:ctrl.signal});
+    if(!r.ok)throw new Error(r.status);
+    const items=(await r.json()).results||[];
+    if(!items.length)throw new Error("empty");
+    feed.replaceChildren();
+    items.forEach(a=>{
+      const card=el("article","news-card");
+      const img=el("img","news-image");img.src=a.image_url;img.alt="";img.loading="lazy";img.referrerPolicy="no-referrer";
+      img.onerror=()=>img.remove();
+      const body=el("div","news-content");
+      const d=new Date(a.published_at).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+      body.append(el("div","news-meta",a.news_site+" • "+d),el("h3","",a.title),el("p","",a.summary));
+      const link=el("a","read-more","Read on "+a.news_site+" →");
+      link.href=a.url;link.target="_blank";link.rel="noopener noreferrer";
+      body.appendChild(link);card.append(img,body);feed.appendChild(card);
+    });
+    document.getElementById("updated").textContent="Updated "+new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})+".";
+    feed.setAttribute("aria-busy","false");
+  }catch(e){showError();}
+  finally{clearTimeout(t);}
+}
+loadFeed();
+</script>
+</body>
+</html>
